@@ -20,3 +20,7 @@ The MoAttenuator.py file provides a helper class to accomplish this communicatio
     ...
     moAttenuator.close()
 
+You can also use this from the command line:
+
+    python MoAttenuator.py /dev/tty.usbmodem123456 15.0
+
