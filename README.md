@@ -1,4 +1,4 @@
-#MoAttenuator
+# MoAttenuator
 
 The MoAttenuator is recognized over USB as a serial port automatically in Windows, Mac and Linux. It accepts a JSON string command to set its attenuation.
 
@@ -17,3 +17,4 @@ The MoAttenuator.py file provides a helper class to accomplish this communicatio
     moAttenuator.setAttenuation( 15.0 )
     ...
     moAttenuator.close()
+
