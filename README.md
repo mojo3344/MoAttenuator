@@ -8,7 +8,9 @@ Json strings are sent over the serial port and are terminated by a \n or \r. The
 
 Where dB is a floating point value between 0.0 and 31.25.
 
-It will respond with that message back.
+It will respond with with this json message back:
+
+    { "msg": "setAtten", "type": "resp", val": dB }\n
 
 The MoAttenuator.py file provides a helper class to accomplish this communication. You tell it what serial port to use and then you can call it to send this message over the serial port:
 
