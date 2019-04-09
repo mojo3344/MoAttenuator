@@ -12,6 +12,11 @@ It will respond with with this json message back:
 
     { "msg": "setAtten", "type": "resp", val": dB }\n
 
+You can also find out information on the attenuator with "info":
+
+    { "msg": "info", "type": "resp" }\n
+
+
 The MoAttenuator.py file provides a helper class to accomplish this communication. You tell it what serial port to use and then you can call it to send this message over the serial port:
 
     from MoAttenuator import MoAttenuator
@@ -23,4 +28,10 @@ The MoAttenuator.py file provides a helper class to accomplish this communicatio
 You can also use this from the command line:
 
     python MoAttenuator.py /dev/tty.usbmodem123456 15.0
+
+
+And get the attenuator information from the command line:
+
+    python MoAttenuator.py /dev/tty.usbmodem123456 0 --info
+    
 

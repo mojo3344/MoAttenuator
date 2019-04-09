@@ -76,19 +76,45 @@ class MoAttenuator:
         return out
 
 
+    def getInfo(self):
+
+        # send json command to get info
+        out = '{{"msg": "info" }}\n'.format()
+        self.sp.write( out )
+        time.sleep(0.25)
+
+        out = None
+
+        # Read Json response
+        data = ''
+        while self.sp.inWaiting() > 0:
+          inChar = self.sp.read(1)
+          data += inChar
+          result = self.digestChar(inChar)
+          if (result != None):
+            out = result
+
+        return out
+
+
 
 # Main script
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("port", help="Serial port of moAttenuator.")
     parser.add_argument("db", help="db attenuation.")
+    parser.add_argument("--info", help="Get info of attenuator.", action="store_true")
     args = parser.parse_args()
 
     # Create the moAttenuator Object
     moAttenuator = MoAttenuator(args.port)
 
-    res = moAttenuator.setAttenuation( args.db )
-    print(res)
+    if (args.info):
+        res = moAttenuator.getInfo()
+        print res
+    else:
+        res = moAttenuator.setAttenuation( args.db )
+        print(res)
 
     moAttenuator.close()
 
